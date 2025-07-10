@@ -2,8 +2,12 @@
 name: custom-meta
 mmdebstrap:
   packages:
-    - cage
-    - chromium
+    # - cage
+    # - chromium #아마도 sbin에 설치가 되는듯?
+    - e2fsprogs
+    - ca-certificates
+    - procps
+    - zstd
   # customize-hooks:
   #   - chroot $1 sh -c "useradd -m -s /bin/bash -u 4000 $IGconf_device_user1"
   #   - |-
