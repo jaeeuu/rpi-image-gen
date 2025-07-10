@@ -1,5 +1,4 @@
-./build.sh -D ../ballot-device/webkiosk -o ../ballot-device/webkiosk/my.options -c kiosk.cfg
-./build.sh -D ../webkiosk -o ../webkiosk/my.options -c kiosk.cfg
+./build.sh -D ./autokiosk -o ../autokiosk/my.options -c my.cfg
 
 sudo add-apt-repository universe
 sudo apt update
