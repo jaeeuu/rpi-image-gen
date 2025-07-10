@@ -10,4 +10,4 @@ sys-apps/fake-hwclock
 # rpi/misc-utils
 # rpi/base/essential
 rpi/user-credentials
-custom-meta
+# custom-meta
