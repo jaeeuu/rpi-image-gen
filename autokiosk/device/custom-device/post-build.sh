@@ -5,7 +5,10 @@ set -eu
 # Mask unwanted services to prevent power-saving actions or delays (if present)
 ln -sf /dev/null $1/etc/systemd/system/systemd-suspend.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/systemd-hibernate.service 2>/dev/null || true
-
+ln -sf /dev/null $1/etc/systemd/system/apt-daily.service
+ln -sf /dev/null $1/etc/systemd/system/apt-daily.timer
+ln -sf /dev/null $1/etc/systemd/system/apt-daily-upgrade.service
+ln -sf /dev/null $1/etc/systemd/system/apt-daily-upgrade.timer
 # rootfs="$1"
 
 # ------ disable display blanking ---------------------------
