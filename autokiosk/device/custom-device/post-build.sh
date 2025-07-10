@@ -13,7 +13,7 @@ ln -sf /dev/null $1/etc/systemd/system/apt-daily-upgrade.service 2>/dev/null || 
 ln -sf /dev/null $1/etc/systemd/system/apt-daily-upgrade.timer 2>/dev/null || true
 if [ -f "$1/etc/systemd/logind.conf" ]; then
   sed -i \
-    -e 's/^[[:space:]]*#\?[[:space:]]*NAutoVTs=.*/NAutoVTs=0/' \
-    -e 's/^[[:space:]]*#\?[[:space:]]*ReserveVT=.*/ReserveVT=0/' \
+    -e 's/^[[:space:]]*#\?[[:space:]]*NAutoVTs=.*/NAutoVTs=1/' \
+    -e 's/^[[:space:]]*#\?[[:space:]]*ReserveVT=.*/ReserveVT=1/' \
     "$1/etc/systemd/logind.conf"
 fi

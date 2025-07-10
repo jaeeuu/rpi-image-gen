@@ -1,1 +1,49 @@
 console=serial0,115200 console=tty1 root=LABEL=SYSTEMA rootfstype=ext4 fsck.repair=yes rootwait consoleblank=0 quiet logo.nologo
+
+# sys-apps/systemd-net-min
+# sys-apps/fake-hwclock
+# rpi/misc-utils
+# rpi/base/essential
+
+   # - cage
+    # - chromium #아마도 sbin에 설치가 되는듯?
+  # customize-hooks:
+  #   - chroot $1 sh -c "useradd -m -s /bin/bash -u 4000 $IGconf_device_user1"
+  #   - |-
+  #     if [ -n "$IGconf_device_user1pass" ] ; then
+  #        chroot $1 sh -c "echo ${IGconf_device_user1}:${IGconf_device_user1pass} | chpasswd"
+  #     fi
+  #   - chroot $1 usermod --pass='*' root
+#  setup-hooks:
+    # Could perform chroot ops here prior to pkg download/extract
+#  essential-hooks:
+    # Could perform chroot ops here prior to installing non-essential pkgs
+#  customize-hooks:
+    # Could perform ops here after the chroot is set up and packages installed, e.g.
+    #   mkdir -p $1/usr/local/assets
+    #   $IGconf_ext_dir/template-gen $IGconf_device_locale1 $IGconf_device_hostname > $1/usr/local/assets/my.template
+#  cleanup-hooks:
+    # Could perform chroot ops here when cleaning up
+#   customize-hooks:
+#   - |-
+#     if [ -n "$IGconf_debstore" ] ; then
+#        mkdir -p $1/tmp/debs && cp -a ${IGconf_debstore}/*.deb $1/tmp/debs
+#        chroot $1 sh -c "apt install -y /tmp/debs/*.deb"
+#     fi
+#   cleanup-hooks:
+#   - rm -rf $1/tmp/debs
+#   customize-hooks:
+#     - chroot $1 sh -c "useradd -m -s /bin/bash -u 4000 $IGconf_device_user1"
+#     - |-
+#       if [ -n "$IGconf_device_user1pass" ] ; then
+#          chroot $1 sh -c "echo ${IGconf_device_user1}:${IGconf_device_user1pass} | chpasswd"
+#       fi
+#     - chroot $1 usermod --pass='*' root
+#   packages:
+#     - build-essential
+#     - autoconf
+#     - automake
+#     - libtool
+#     - flex
+#     - bison
+#     - vim

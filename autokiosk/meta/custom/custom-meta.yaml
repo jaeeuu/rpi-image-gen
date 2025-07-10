@@ -1,0 +1,9 @@
+---
+name: custom-meta-base
+mmdebstrap:
+  packages:
+    - e2fsprogs
+    - ca-certificates
+    - procps
+    - zstd
+ 
