@@ -1,6 +1,9 @@
 ---
-name: pkg-essential
+name: essential
 mmdebstrap:
+  packages:
+    - cage
+    - chromium
 #  setup-hooks:
     # Could perform chroot ops here prior to pkg download/extract
 #  essential-hooks:

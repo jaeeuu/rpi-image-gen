@@ -17,7 +17,7 @@ dtparam=audio=on
 camera_auto_detect=0
 
 # Automatically load overlays for detected DSI displays
-display_auto_detect=1
+display_auto_detect=0
 
 # Automatically load initramfs files, if found
 auto_initramfs=1
