@@ -1,0 +1,10 @@
+class=custom-device
+hostname=rpi-device
+user1=admin
+user1pass=1111
+locale1="en_US.UTF-8"
+keyboard_keymap=us
+keyboard_layout="English (UK)"
+timezone="Japan/Tokyo"
+ssh_user1=n
+storage_type=sd
