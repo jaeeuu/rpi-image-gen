@@ -1,4 +1,4 @@
-debian/bookworm/arm64/base-slim
+debian/bookworm/arm64/base-apt
 rpi/debian/bookworm/apt
 rpi/arm64/linux-image-v8
 rpi/boot-firmware
