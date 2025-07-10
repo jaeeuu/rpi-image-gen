@@ -4,9 +4,7 @@ rpi/arm64/linux-image-v8
 rpi/boot-firmware
 rpi/misc-skel
 sys-apps/systemd-net-min
-sys-apps/fake-hwclock
-
-
+# sys-apps/fake-hwclock
 # rpi/misc-utils
 # rpi/base/essential
 rpi/user-credentials

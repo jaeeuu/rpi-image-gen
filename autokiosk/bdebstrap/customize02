@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# install -D -m644 /usr/share/wayfire/wayfire.ini \
-#                  "$1/etc/xdg/wayfire/wayfire.ini"
-# sed -i '/^\[idle\]/,/^\[/{/dpms_timeout/ s/=.*/=-1/; /screensaver_timeout/ s/=.*/=-1/; /disable_initially/ s/=.*/=true/}' \
-#     "$1/etc/xdg/wayfire/wayfire.ini"

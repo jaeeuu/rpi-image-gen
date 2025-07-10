@@ -12,7 +12,7 @@
 		<option name="hide_delay" type="int">
 			<_short>Delay (in ms) before cursor will be hidden</_short>
 			<_long>The delay in ms before the plugin will hide the cursor. The cursor is shown again when cursor motion happens.</_long>
-			<default>2000</default>
+			<default>250</default>
 			<min>250</min>
 		</option>
 	</plugin>
