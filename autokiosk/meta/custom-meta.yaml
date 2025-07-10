@@ -4,13 +4,13 @@ mmdebstrap:
   packages:
     - cage
     - chromium
-  customize-hooks:
-    - chroot $1 sh -c "useradd -m -s /bin/bash -u 4000 $IGconf_device_user1"
-    - |-
-      if [ -n "$IGconf_device_user1pass" ] ; then
-         chroot $1 sh -c "echo ${IGconf_device_user1}:${IGconf_device_user1pass} | chpasswd"
-      fi
-    - chroot $1 usermod --pass='*' root
+  # customize-hooks:
+  #   - chroot $1 sh -c "useradd -m -s /bin/bash -u 4000 $IGconf_device_user1"
+  #   - |-
+  #     if [ -n "$IGconf_device_user1pass" ] ; then
+  #        chroot $1 sh -c "echo ${IGconf_device_user1}:${IGconf_device_user1pass} | chpasswd"
+  #     fi
+  #   - chroot $1 usermod --pass='*' root
 #  setup-hooks:
     # Could perform chroot ops here prior to pkg download/extract
 #  essential-hooks:

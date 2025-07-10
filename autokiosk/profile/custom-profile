@@ -1,4 +1,4 @@
-debian/bookworm/arm64/base-apt
+debian/bookworm/arm64/base-slim
 rpi/debian/bookworm/apt
 rpi/arm64/linux-image-v8
 rpi/boot-firmware
@@ -7,7 +7,7 @@ sys-apps/systemd-net-min
 sys-apps/fake-hwclock
 
 
-#rpi/misc-utils
-#rpi/base/essential
-#rpi/user-credentials
+# rpi/misc-utils
+# rpi/base/essential
+rpi/user-credentials
 custom-meta
