@@ -1,0 +1,6 @@
+---
+name: rpi-fs-tools
+mmdebstrap:
+  packages:
+    - dosfstools
+    - e2fsprogs

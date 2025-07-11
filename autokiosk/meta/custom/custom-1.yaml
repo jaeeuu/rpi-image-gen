@@ -1,9 +1,10 @@
 ---
-name: custom-meta-base
+name: custom-meta-1
 mmdebstrap:
   packages:
     - e2fsprogs
     - ca-certificates
     - procps
     - zstd
+#    - libinput-bin
  

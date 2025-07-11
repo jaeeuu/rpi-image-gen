@@ -6,9 +6,11 @@ After=multi-user.target
 User=<KIOSK_USER>
 TTYPath=/dev/tty1
 Environment="XDG_RUNTIME_DIR=<KIOSK_RUNDIR>"
+Environment="WLR_NO_IDLE=1"
 Restart=always
+RestartPreventExitStatus=0
 ExecStart=/usr/bin/cage -- <KIOSK_APP>
 StandardError=journal
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
