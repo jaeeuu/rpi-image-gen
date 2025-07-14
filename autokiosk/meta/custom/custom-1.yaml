@@ -6,5 +6,8 @@ mmdebstrap:
     - ca-certificates
     - procps
     - zstd
-#    - libinput-bin
+    - flashrom
+    - wget
+    - procps
+#    - plymouth
  

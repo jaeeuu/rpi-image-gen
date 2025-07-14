@@ -1,1 +1,1 @@
-console=tty1 root=LABEL=ROOT rootfstype=ext4 rootwait consoleblank=0 logo.nologo loglevel=3 video=DSI-1:1280×720M@60 
+console=serial0,115200 root=LABEL=ROOT rootfstype=ext4 rootwait logo.nologo video=DSI-2:1280×720M@60 vt.global_cursor_default=0

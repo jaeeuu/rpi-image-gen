@@ -1,11 +1,10 @@
 [Unit]
-Description=backend
+Description=front
 
 [Service]
 Restart=always
-RestartSec=5
 WorkingDirectory=/opt/app
-ExecStart=/opt/app/back
+ExecStart=/opt/app/front-serve
 StandardError=journal
 
 [Install]

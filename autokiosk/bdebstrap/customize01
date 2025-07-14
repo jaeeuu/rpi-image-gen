@@ -18,8 +18,8 @@ cat ../services/kiosk.service.tpl | sed \
 
 $BDEBSTRAP_HOOKS/enable-units "$1" kiosk
 
-cat ../services/ballot-back.service.tpl > $1/etc/systemd/system/ballot-back.service
-$BDEBSTRAP_HOOKS/enable-units "$1" ballot-back
+cat ../services/ballot-front.service.tpl > $1/etc/systemd/system/ballot-front.service
+$BDEBSTRAP_HOOKS/enable-units "$1" ballot-front
 
-cat ../services/eeprom-clean.service.tpl > $1/etc/systemd/system/eeprom-clean.service
-$BDEBSTRAP_HOOKS/enable-units "$1" eeprom-clean
+# cat ../services/eeprom-tool.service.tpl > $1/etc/systemd/system/eeprom-tool.service
+# $BDEBSTRAP_HOOKS/enable-units "$1" eeprom-tool

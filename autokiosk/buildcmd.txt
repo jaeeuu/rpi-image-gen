@@ -3,3 +3,7 @@
 sudo add-apt-repository universe
 sudo apt update
 sudo apt install debian-archive-keyring
+
+apt list '~E'
+
+flashrom -p linux_spi:dev=/dev/spidev10.0,spispeed=16000 -w /boot/firmware/pieeprom.upd

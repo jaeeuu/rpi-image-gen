@@ -5,8 +5,7 @@ rpi/debian/bookworm/apt
 custom/custom-1
 custom/custom-2
 rpi/boot-firmware
-rpi/arm64/linux-image-v8
+base/linux-kernel-2712
 rpi/user-credentials
 rpi/misc-skel
 sys-apps/systemd-net-min
-sys-apps/fake-hwclock
