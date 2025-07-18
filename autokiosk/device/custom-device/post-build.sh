@@ -20,16 +20,23 @@ ln -sf /dev/null $1/etc/systemd/system/wpa_supplicant.service 2>/dev/null || tru
 ln -sf /dev/null $1/etc/systemd/system/avahi-daemon.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/ModemManager.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/man-db.timer 2>/dev/null || true
+# ln -sf /dev/null $1/etc/systemd/system/systemd-fsck.service 2>/dev/null || true
+# enable fsck after boot.
 # ln -sf /dev/null $1/etc/systemd/system/getty@*.service 2>/dev/null || true
 
 for unit in "$1"/etc/systemd/system/getty@*.service; do
   [ -e "$unit" ] || continue
   ln -sf /dev/null "$unit"
 done
-ln -sf /dev/null $1/etc/systemd/system/logind.service 2>/dev/null || true
+
+sed -i -e 's/^WantedBy=multi-user\.target$/WantedBy=sysinit.target/' "$1/lib/systemd/system/seatd.service"
+
+# ln -sf /dev/null $1/lib/systemd/system/plymouth-quit.service 2>/dev/null || true
+
+ln -sf /dev/null $1/etc/systemd/system/systemd-logind.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/getty-static.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/getty@.service 2>/dev/null || true
-ln -sf /dev/null $1/etc/systemd/system/getty.target 2>/dev/null || true
+# ln -sf /dev/null $1/etc/systemd/system/getty.target 2>/dev/null || true
 
 # vconsole-setup, console-setup.service, keyboard-setup.service, serial-getty@ttyAMA0.service, serial-getty@ttyS0.service
 
@@ -52,19 +59,8 @@ sed -Ei '
 chmod -R 755 "$1/opt/app"
 chmod +x "$1/usr/sbin/eeprom-tool.sh"
 
-# APP="/usr/bin/chromium-browser http://127.0.0.1:3610 \
-# --kiosk --noerrdialogs --disable-translate --touch-events --disable-touch-drag-drop \
-# --disable-infobars --no-first-run --disable-first-run-ui --disable-pinch --overscroll-history-navigation=disabled \
-# --disable-features=TouchpadOverscrollHistoryNavigation --disable-restore-session-state --ozone-platform=wayland \
-# --allow-insecure-localhost --app-auto-launched --disable-extensions --disable-logging --disable-pull-to-refresh-effect --no-default-browser-check --disable-plugins \
-# --disable-default-apps --disable-background-timer-throttling --disable-background-networking --disable-notifications --disable-single-click-autofill \
-# --enable-features=OverlayScrollbar --start-maximized --no-sandbox --disable-crash-reporter --no-crashpad"
-
-# sed -i \
-# -e "s|<KIOSK_USER>|$IGconf_device_user1|g" \
-# -e "s|<KIOSK_RUNDIR>|\/home\/$IGconf_device_user1|g" \
-# -e "s|<KIOSK_APP>|$APP|g" \
-# $1/etc/systemd/system/kiosk.service
-
-# $BDEBSTRAP_HOOKS/enable-units "$1" kiosk
-# $BDEBSTRAP_HOOKS/enable-units "$1" ballot-back
+rm -rf "$1/usr/share/plymouth/themes/bgrt" "$1/usr/share/plymouth/themes/fade-in" \
+       "$1/usr/share/plymouth/themes/glow" "$1/usr/share/plymouth/themes/script" \
+       "$1/usr/share/plymouth/themes/solar" "$1/usr/share/plymouth/themes/spinfinity" \
+       "$1/usr/share/plymouth/themes/details"
+       

@@ -1,6 +1,7 @@
 [Unit]
 Description=Kiosk Wayland Session
-After=seatd.service
+After=seatd.service ballot-front.service
+Requires=seatd.service ballot-front.service
 
 [Service]
 User=<KIOSK_USER>
@@ -11,4 +12,4 @@ ExecStart=/usr/bin/cage -- <KIOSK_APP>
 StandardError=journal
 
 [Install]
-WantedBy=graphical.target
+WantedBy=sysinit.target

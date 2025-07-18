@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # chroot $1 apt install -y cage chromium
 
 APP="/usr/bin/chromium-browser http://127.0.0.1:3610/ \
@@ -21,5 +23,14 @@ $BDEBSTRAP_HOOKS/enable-units "$1" kiosk
 cat ../services/ballot-front.service.tpl > $1/etc/systemd/system/ballot-front.service
 $BDEBSTRAP_HOOKS/enable-units "$1" ballot-front
 
+cat ../services/plymouthd.conf > $1/etc/plymouth/plymouthd.conf
+chmod a+rx "$1/etc/plymouth/plymouthd.conf"
+
+# cat ../services/quit-splash.service.tpl > $1/lib/systemd/system/plymouth-quit.service
+
+# cat ../services/quit-splash.service.tpl > $1/lib/systemd/system/quit-splash.service
+# $BDEBSTRAP_HOOKS/enable-units "$1" quit-splash
+
 # cat ../services/eeprom-tool.service.tpl > $1/etc/systemd/system/eeprom-tool.service
 # $BDEBSTRAP_HOOKS/enable-units "$1" eeprom-tool
+

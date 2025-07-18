@@ -6,29 +6,29 @@ display_auto_detect=0
 auto_initramfs=1
 
 # Enable DRM VC4 V3D driver
-# dtoverlay=vc4-kms-v3d
-max_framebuffers=2
+dtoverlay=vc4-kms-v3d
+# max_framebuffers=2
 
-# disable_fw_kms_setup=1
+disable_fw_kms_setup=1
 disable_overscan=1
 arm_boost=1
 
 [pi4]
 enable_uart=1
-dtoverlay=disable-wifi
-dtoverlay=disable-bt
+# dtoverlay=disable-wifi
+# dtoverlay=disable-bt
 
 [pi5]
 BOOT_UART=1
-dtoverlay=disable-wifi-pi5
-dtoverlay=disable-bt-pi5
+# dtoverlay=disable-wifi-pi5
+# dtoverlay=disable-bt-pi5
 
 [all]
 boot_delay=0
 disable_splash=1
 dtoverlay=vc4-kms-dsi-ili9881-7inch
-force_eeprom_read=0
+# force_eeprom_read=0
 pciex4_reset=0
 os_check=0
-dtparam=i2c_arm=on
-# later add quiet vt.global_cursor_default=0 loglevel=0 systemd.getty_auto=no 
+# dtparam=i2c_arm=on
+# later add quiet vt.global_cursor_default=0 loglevel=0 systemd.getty_auto=no logo.nologo fsck.mode=skip loglevel=4

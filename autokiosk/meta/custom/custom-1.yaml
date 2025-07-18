@@ -9,5 +9,9 @@ mmdebstrap:
     - flashrom
     - wget
     - procps
-#    - plymouth
+    - nano
+    - ncurses-term
+    - initramfs-tools
+    - plymouth
+
  

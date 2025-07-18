@@ -5,7 +5,7 @@ rpi/debian/bookworm/apt
 custom/custom-1
 custom/custom-2
 rpi/boot-firmware
-base/linux-kernel-2712
+base/linux-kernel-custom
 rpi/user-credentials
 rpi/misc-skel
 sys-apps/systemd-net-min

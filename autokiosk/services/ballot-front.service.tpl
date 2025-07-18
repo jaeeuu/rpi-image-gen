@@ -1,5 +1,6 @@
 [Unit]
 Description=front
+Before=kiosk.service
 
 [Service]
 Restart=always
@@ -8,4 +9,4 @@ ExecStart=/opt/app/front-serve
 StandardError=journal
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target

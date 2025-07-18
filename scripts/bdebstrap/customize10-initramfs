@@ -16,11 +16,42 @@ for dir in ${IGIMAGE}/device/initramfs-tools \
    rsync --archive --ignore-existing "${dir}/" $1/etc/initramfs-tools
 done
 
+CONF="$1/etc/initramfs-tools/initramfs.conf"
+HOOKDIR="$1/etc/initramfs-tools/hooks"
+
+if grep -qE '^[[:space:]]*MODULES=' "$CONF"; then
+    sed -i -E 's|^[[:space:]]*MODULES=.*|MODULES=dep|' "$CONF"
+else
+    echo "MODULES=dep" >>"$CONF"
+fi
+
+if grep -qE '^[[:space:]]*COMPRESS=' "$CONF"; then
+    sed -i -E 's|^[[:space:]]*COMPRESS=.*|COMPRESS=lz4|' "$CONF"
+else
+    echo "COMPRESS=lz4" >>"$CONF"
+fi
+
+if grep -qE '^[[:space:]]*KEYMAP=' "$CONF"; then
+    sed -i -E 's|^[[:space:]]*KEYMAP=.*|KEYMAP=n|' "$CONF"
+else
+    echo "KEYMAP=n" >>"$CONF"
+fi
+
+
 # Hint if the image layout has declared a rootfs type. This helps ensure
 # the appropriate fsck binaries are installed.
 if igconf isset image_rootfs_type ; then
    sed -i "s|FSTYPE=\([^ ]*\)|FSTYPE=${IGconf_image_rootfs_type}|" $1/etc/initramfs-tools/initramfs.conf
 fi
+
+chmod a-x $1/usr/share/initramfs-tools/hooks/lvm2 2>/dev/null || true
+chmod a-x $1/usr/share/initramfs-tools/hooks/fsck 2>/dev/null || true
+
+# rm -f "$1/usr/share/plymouth/themes/default.plymouth"
+# chmod -R 755 "$1/usr/share/plymouth/themes/spinner"
+
+# 아니 생각해보니까 여기서 암만 수정해도 컴파일할때 여기꺼를 안넘겼잖아... autokiosk만 넘기니까.
+# 심지어 빌드할떄 Debian이 아니라 Ubuntu의 apt를 가져오는거였어,
 
 # Create all images if kernel postinst was instructed to not generate, else
 # update

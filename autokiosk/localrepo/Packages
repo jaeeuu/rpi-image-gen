@@ -1,0 +1,23 @@
+Package: linux-image-6.12.34-custom-rpi-2712
+Source: linux
+Version: 1:6.12.34-1+rpt1~bookworm
+Architecture: arm64
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Installed-Size: 52489
+Depends: kmod, linux-base (>= 4.3~), initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool
+Recommends: apparmor
+Suggests: firmware-linux-free, linux-doc-6.12, debian-kernel-handbook
+Breaks: fwupdate (<< 12-7), initramfs-tools (<< 0.120+deb8u2), wireless-regdb (<< 2019.06.03-1~)
+Filename: pool/linux-kernel.deb
+Size: 16664498
+MD5sum: 06c58c8c89bf52371bb7ac61304bfb3c
+SHA1: 0893c876bfb542ce1358cf00c9a9141657ec9c84
+SHA256: a4cb8028820bfa4bdad1aec08862926c9df9de99f4dbe6af278e8ac0d5bc1c24
+Section: kernel
+Priority: optional
+Homepage: https://github.com/raspberrypi/linux/
+Description: Linux 6.12 for Raspberry Pi 2712, Raspberry Pi
+ The Linux kernel 6.12 and modules for use on Raspberry Pi 2712 kernel.
+ .
+ This kernel includes the patches for Raspberry Pi platforms.
+
