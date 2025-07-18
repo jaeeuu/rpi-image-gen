@@ -4,14 +4,12 @@ mmdebstrap:
   packages:
     - e2fsprogs
     - ca-certificates
-    - procps
     - zstd
     - flashrom
     - wget
-    - procps
     - nano
     - ncurses-term
     - initramfs-tools
     - plymouth
-
+    - procps
  
