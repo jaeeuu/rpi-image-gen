@@ -5,8 +5,9 @@ Requires=seatd.service ballot-front.service
 
 [Service]
 Environment="XDG_RUNTIME_DIR=/opt/app"
+Environment="WLR_NO_IDLE=1"
 Restart=always
-ExecStart=/usr/bin/weston --backend=drm --shell=kiosk
+ExecStart=/usr/bin/cage -- /usr/bin/cog --platform=drm http://127.0.0.1:3610/
 StandardError=journal
 
 [Install]

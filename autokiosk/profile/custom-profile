@@ -1,11 +1,10 @@
 
-
-base/base-slim
-rpi/debian/bookworm/apt
+base/trixie-base-slim
+rpi/debian/trixie/apt
 custom/custom-1
 custom/custom-2
 rpi/boot-firmware
 base/linux-kernel-custom
 rpi/user-credentials
 rpi/misc-skel
-sys-apps/systemd-net-min
+base/systemd-net-min

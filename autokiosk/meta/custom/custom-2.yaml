@@ -5,8 +5,10 @@ mmdebstrap:
     - arm64
   mode: auto
   packages:
-    - cage
-    - chromium
+    - weston
+    - cog
     - seatd
     - libinput-bin
-
+  aptopts:
+    - APT::Install-Suggests "false"
+    - APT::Install-Recommends "false"

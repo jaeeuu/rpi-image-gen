@@ -47,20 +47,40 @@ ln -sf /dev/null $1/etc/systemd/system/getty@.service 2>/dev/null || true
 #     "$1/etc/systemd/logind.conf"
 # fi
 
-FSTAB="$1/etc/fstab"
+# FSTAB="$1/etc/fstab"
 
-sed -Ei '
-  /^\s*#/b
-  /^\s*$/b
-  /(^|,|\s)fastboot(,|\s|$)/b
-  s/^(\S+[[:space:]]+\S+[[:space:]]+\S+[[:space:]]+)(\S+)/\1\2,fastboot/
-' "$FSTAB"
+# sed -Ei '
+#   /^\s*#/b
+#   /^\s*$/b
+#   /(^|,|\s)fastboot(,|\s|$)/b
+#   s/^(\S+[[:space:]]+\S+[[:space:]]+\S+[[:space:]]+)(\S+)/\1\2,fastboot/
+# ' "$FSTAB"
 
 chmod -R 755 "$1/opt/app"
-chmod +x "$1/usr/sbin/eeprom-tool.sh"
+chmod +x "$1/opt/eeprom-tool.sh"
 
-rm -rf "$1/usr/share/plymouth/themes/bgrt" "$1/usr/share/plymouth/themes/fade-in" \
-       "$1/usr/share/plymouth/themes/glow" "$1/usr/share/plymouth/themes/script" \
-       "$1/usr/share/plymouth/themes/solar" "$1/usr/share/plymouth/themes/spinfinity" \
-       "$1/usr/share/plymouth/themes/details"
-       
+# rm -rf "$1/usr/share/plymouth/themes/bgrt" "$1/usr/share/plymouth/themes/fade-in" \
+#        "$1/usr/share/plymouth/themes/glow" "$1/usr/share/plymouth/themes/script" \
+#        "$1/usr/share/plymouth/themes/solar" "$1/usr/share/plymouth/themes/spinfinity" \
+#        "$1/usr/share/plymouth/themes/details"
+
+rm -rf "$1/usr/share/doc"/* "$1/usr/share/man"/* "$1/usr/share/locale/"/* "$1/usr/share/info/"/* "$1/usr/share/lintian/"/* \
+        "$1/usr/share/linda/"/* "$1/usr/share/debhelper/"/* "$1/usr/share/pixmaps/"/* "$1/usr/share/applications/"/* \
+        "$1/usr/share/help/"/* "$1/usr/share/gtk-doc"/* "$1/usr/share/icons"/* "$1/usr/share/themes"/* \
+        "$1/usr/share/sounds"/* "$1/usr/share/backgrounds"/*
+
+rm -rf "$1/usr/bin/dpkg" "$1/usr/include"/* "$1/usr/share/pkgconfig"/* "$1/usr/share/aclocal"/*
+rm -rf "$1/etc/apt" "$1/etc/dpkg" 
+rm -rf "$1/var/cache/*" "$1/var/lib/apt/lists/" "$1/var/tmp"/*
+rm -rf "$1/tmp"/*
+
+find "$1/var/log" -type f -exec truncate -s 0 {} \; 2>/dev/null || true
+
+# if [ -d "$1/usr/share/zoneinfo" ]; then
+#     cd "$1/usr/share/zoneinfo"
+#     find . -type f ! -path "./Asia/Seoul" ! -name "UTC" ! -name "GMT" -delete 2>/dev/null || true
+#     find . -type d -empty -delete 2>/dev/null || true
+# fi
+
+rm -f $1/boot/firmware/initrd.img-*
+

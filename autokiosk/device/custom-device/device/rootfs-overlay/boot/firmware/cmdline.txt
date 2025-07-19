@@ -1,1 +1,1 @@
-console=serial0,115200 root=LABEL=ROOT rootfstype=ext4 rootwait video=DSI-2:1280×720M@60 consoleblank=0 vt.global_cursor_default=0 systemd.fsck=no splash plymouth.ignore-serial-consoles plymouth.graphical
+console=serial0,115200 root=LABEL=ROOT rootfstype=ext4 rootwait video=DSI-2:1280×720M@60 consoleblank=0 vt.global_cursor_default=0 systemd.fsck=no

@@ -2,14 +2,17 @@
 name: custom-meta-1
 mmdebstrap:
   packages:
-    - e2fsprogs
     - ca-certificates
-    - zstd
-    - flashrom
     - wget
+    - zstd
     - nano
     - ncurses-term
-    - initramfs-tools
-    - plymouth
-    - procps
- 
+    # - initramfs-tools
+    # - plymouth
+    # - plymouth-themes
+    # - flashrom
+    # - procps
+    # - lz4
+  aptopts:
+    - APT::Install-Suggests "false"
+    - APT::Install-Recommends "false"
