@@ -1,0 +1,47 @@
+---
+name: trixie-base-essential
+mmdebstrap:
+  architectures:
+    - arm64
+  mode: auto
+  variant: essential
+  suite: trixie
+  mirrors:
+    - deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+    - deb http://deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+    - deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+    - deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+    - deb [trusted=yes] copy:///home/jreset.linux/rpi-image-gen/autokiosk/localrepo ./
+  packages:
+    - login
+    - mount
+    - adduser
+    - libbpf1
+    - linux-sysctl-defaults
+    - udev
+  essential-hooks:
+    - echo tzdata tzdata/Areas select "$IGconf_device_timezone_area"
+        | chroot $1 debconf-set-selections
+    - echo tzdata tzdata/Zones/$IGconf_device_timezone_area select "$IGconf_device_timezone_city"
+        | chroot $1 debconf-set-selections
+    - echo locales locales/locales_to_be_generated multiselect "$IGconf_device_locale1"
+        | chroot $1 debconf-set-selections
+    - echo locales locales/default_environment_locale select "$IGconf_device_locale1"
+        | chroot $1 debconf-set-selections
+    - echo keyboard-configuration keyboard-configuration/variant select "$IGconf_device_keyboard_layout"
+        | chroot $1 debconf-set-selections
+    - echo keyboard-configuration keyboard-configuration/xkb-keymap select "$IGconf_device_keyboard_keymap"
+        | chroot $1 debconf-set-selections
+  aptopts:
+    - APT::Install-Suggests "false"
+    - APT::Install-Recommends "false"
+  dpkgopts:
+    - path-exclude=/usr/share/man/*
+    - path-exclude=/usr/share/locale/*
+    - path-exclude=/usr/share/doc/*
+    - path-exclude=/usr/share/{doc,info,man,omf,help,gnome/help}/*
+    - path-exclude=/usr/share/lintian/*
+    - path-exclude=/usr/share/linda/*
+    - path-exclude=/usr/share/debhelper/*
+    - path-exclude=/usr/share/pixmaps/*
+    - path-exclude=/usr/share/applications/*

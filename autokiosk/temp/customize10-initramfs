@@ -1,0 +1,65 @@
+#!/bin/bash
+
+set -eu
+
+# rm -f "$1/usr/share/plymouth/themes/default.plymouth"
+# chmod -R 755 "$1/usr/share/plymouth/themes/spinner"
+
+# Currently only initramfs-tools is supported
+if ! grep-dctrl -q -XFStatus "install ok installed" -a \
+   -XFPackage initramfs-tools $1/var/lib/dpkg/status ; then
+   exit 0
+fi
+
+# Install files
+for dir in ${IGIMAGE}/device/initramfs-tools \
+           ${IGDEVICE}/device/initramfs-tools \
+           ../device/initramfs-tools ; do
+   [[ -d "$dir" ]] || continue
+   rsync --archive --ignore-existing "${dir}/" $1/etc/initramfs-tools
+done
+
+CONF="$1/etc/initramfs-tools/initramfs.conf"
+HOOKDIR="$1/etc/initramfs-tools/hooks"
+
+# if grep -qE '^[[:space:]]*MODULES=' "$CONF"; then
+#     sed -i -E 's|^[[:space:]]*MODULES=.*|MODULES=dep|' "$CONF"
+# else
+#     echo "MODULES=dep" >>"$CONF"
+# fi
+
+if grep -qE '^[[:space:]]*COMPRESS=' "$CONF"; then
+    sed -i -E 's|^[[:space:]]*COMPRESS=.*|COMPRESS=zstd|' "$CONF"
+else
+    echo "COMPRESS=zstd" >>"$CONF"
+fi
+
+echo "COMPRESSLEVEL=3" >>"$CONF"
+
+if grep -qE '^[[:space:]]*KEYMAP=' "$CONF"; then
+    sed -i -E 's|^[[:space:]]*KEYMAP=.*|KEYMAP=n|' "$CONF"
+else
+    echo "KEYMAP=n" >>"$CONF"
+fi
+
+# Hint if the image layout has declared a rootfs type. This helps ensure
+# the appropriate fsck binaries are installed.
+if igconf isset image_rootfs_type ; then
+   sed -i "s|FSTYPE=\([^ ]*\)|FSTYPE=${IGconf_image_rootfs_type}|" $1/etc/initramfs-tools/initramfs.conf
+fi
+
+rm -f $1/usr/share/initramfs-tools/hooks/lvm2 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/fsck 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/dmsetup 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/resume 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/keymap 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/raspi-firmware-fsck 2>/dev/null || true
+rm -f $1/usr/share/initramfs-tools/hooks/thermal 2>/dev/null || true
+
+# Create all images if kernel postinst was instructed to not generate, else
+# update
+if [ "${INITRD:-}" = "No" ]; then
+   chroot $1 update-initramfs -c -k all
+else
+   chroot $1 update-initramfs -u -k all
+fi

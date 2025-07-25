@@ -1,10 +1,10 @@
 
-base/trixie-base-slim
+custom/base/trixie-base-essential
 rpi/debian/trixie/apt
 custom/custom-1
 custom/custom-2
-rpi/boot-firmware
-base/linux-kernel-custom
-rpi/user-credentials
-rpi/misc-skel
-base/systemd-net-min
+custom/rpi/boot-firmware
+custom/base/linux-kernel-custom
+custom/rpi/user-credentials
+custom/rpi/misc-skel
+custom/base/systemd-net-min

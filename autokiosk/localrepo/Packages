@@ -1,18 +1,37 @@
+Package: cog-dev
+Version: 0.19.1
+Architecture: arm64
+Maintainer: Alberto Garcia <berto@igalia.com>
+Installed-Size: 621
+Depends: libc6 (>= 2.34), libcairo2 (>= 1.6.0), libdrm2 (>= 2.4.75), libegl1, libepoxy0 (>= 1.0), libglib2.0-0t64 (>= 2.80.0), libinput10 (>= 1.4.0), libmanette-0.2-0 (>= 0.1.2), libsoup-3.0-0 (>= 2.32.2), libudev1 (>= 183), libwayland-client0 (>= 1.20.0), libwayland-cursor0 (>= 1.0.2), libwpe-1.0-1 (>= 1.14.0), libwpebackend-fdo-1.0-1 (>= 1.10.0), libwpewebkit-2.0-1 (>= 2.42.0)
+Filename: pool/cog-dev.deb
+Size: 111036
+MD5sum: 1574080f14bcad6da29c4730c4fabf6e
+SHA1: 3a0a9731af46e9366da2b4b25e7e5af1d7fb86d1
+SHA256: 6c0d37974cac00eb553180e6f581221d825d992890ecc904239bbc30903d5311
+Section: web
+Priority: optional
+Homepage: https://github.com/Igalia/cog
+Description: Single-window web browser based on WPE WebKit
+ Cog is a small, single-window web browser based on WPE WebKit.
+ It provides no user interface and is suitable to be used as a web
+ application container for embedded devices in kiosk mode.
+
 Package: linux-image-6.12.34-custom-rpi-2712
 Source: linux
-Version: 1:6.12.34-1+rpt1~bookworm
+Version: 1:6.12.34-1+rpt1~trixie
 Architecture: arm64
 Maintainer: Serge Schneider <serge@raspberrypi.com>
-Installed-Size: 52489
-Depends: kmod, linux-base (>= 4.3~), initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool
+Installed-Size: 52392
+Depends: kmod, linux-base (>= 4.3~)
 Recommends: apparmor
 Suggests: firmware-linux-free, linux-doc-6.12, debian-kernel-handbook
-Breaks: fwupdate (<< 12-7), initramfs-tools (<< 0.120+deb8u2), wireless-regdb (<< 2019.06.03-1~)
+Breaks: fwupdate (<< 12-7), wireless-regdb (<< 2019.06.03-1~)
 Filename: pool/linux-kernel.deb
-Size: 16664498
-MD5sum: 06c58c8c89bf52371bb7ac61304bfb3c
-SHA1: 0893c876bfb542ce1358cf00c9a9141657ec9c84
-SHA256: a4cb8028820bfa4bdad1aec08862926c9df9de99f4dbe6af278e8ac0d5bc1c24
+Size: 16619796
+MD5sum: fd6521500bffe27e726ff077a4d25838
+SHA1: 43a991b8f8ae3193860d8e443fc2edc1230e32d6
+SHA256: 291e0324bdf0bff915df2dfe4c70a7d26f1333727262f4918ffea630e0fc4331
 Section: kernel
 Priority: optional
 Homepage: https://github.com/raspberrypi/linux/

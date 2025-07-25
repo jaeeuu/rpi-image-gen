@@ -4,9 +4,11 @@ mmdebstrap:
   packages:
     - ca-certificates
     - wget
-    - zstd
     - nano
     - ncurses-term
+    - seatd
+    - libseat1
+    # - zstd
     # - initramfs-tools
     # - plymouth
     # - plymouth-themes
@@ -16,3 +18,13 @@ mmdebstrap:
   aptopts:
     - APT::Install-Suggests "false"
     - APT::Install-Recommends "false"
+  dpkgopts:
+    - path-exclude=/usr/share/man/*
+    - path-exclude=/usr/share/locale/*
+    - path-exclude=/usr/share/doc/*
+    - path-exclude=/usr/share/{doc,info,man,omf,help,gnome/help}/*
+    - path-exclude=/usr/share/lintian/*
+    - path-exclude=/usr/share/linda/*
+    - path-exclude=/usr/share/debhelper/*
+    - path-exclude=/usr/share/pixmaps/*
+    - path-exclude=/usr/share/applications/*

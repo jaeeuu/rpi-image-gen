@@ -1,0 +1,1 @@
+KERNEL=="card2", SUBSYSTEM=="drm", ACTION=="add", RUN+="/bin/rm -f /dev/dri/card2"

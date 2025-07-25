@@ -1,0 +1,13 @@
+[Unit]
+Description=Kiosk Wayland Session
+After=seatd.service ballot-front.service
+Requires=seatd.service ballot-front.service
+
+[Service]
+Environment="XDG_RUNTIME_DIR=/opt/app"
+Restart=always
+ExecStart=/usr/bin/weston --backend=drm --shell=kiosk
+StandardError=journal
+
+[Install]
+WantedBy=sysinit.target

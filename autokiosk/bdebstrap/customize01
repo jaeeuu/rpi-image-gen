@@ -18,14 +18,23 @@ set -eu
 #    -e "s|<KIOSK_APP>|$APP|g" \
 #    > $1/etc/systemd/system/kiosk.service
 
+cat ../services/kiosk.service.tpl > $1/etc/systemd/system/kiosk.service
 $BDEBSTRAP_HOOKS/enable-units "$1" kiosk
 
-cat ../services/ballot-front.service.tpl > $1/etc/systemd/system/ballot-front.service
-$BDEBSTRAP_HOOKS/enable-units "$1" ballot-front
+cat ../services/ballot-back.service.tpl > $1/etc/systemd/system/ballot-back.service
+$BDEBSTRAP_HOOKS/enable-units "$1" ballot-back
+
+# mkdir -p "$1/etc/xdg/weston"
+# cat ../services/weston.ini.tpl > "$1/etc/xdg/weston/weston.ini"
+mkdir -p "$1/etc/xdg/cog"
+cat ../services/cog.ini.tpl > "$1/etc/xdg/cog/cog.ini"
+
+# mkdir -p "$1/etc/udev/rules.d"
+# cat ../services/72-seat.rules.tpl > "$1/etc/udev/rules.d/72-rp1_drm-seat.rules"
 
 # cat ../services/plymouthd.conf > $1/etc/plymouth/plymouthd.conf
 # chmod a+rx "$1/etc/plymouth/plymouthd.conf"
-chmod a+rx "$1/etc/xdg/weston/weston.ini"
+# chmod a+rx "$1/etc/xdg/weston/weston.ini"
 
 # cat ../services/quit-splash.service.tpl > $1/lib/systemd/system/plymouth-quit.service
 

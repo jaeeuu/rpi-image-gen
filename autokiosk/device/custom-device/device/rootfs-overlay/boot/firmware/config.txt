@@ -1,14 +1,8 @@
-# dtparam=spi=on
-# Enable audio (loads snd_bcm2835)
-# dtparam=audio=on
 camera_auto_detect=0
 display_auto_detect=0
 auto_initramfs=0
-
-# Enable DRM VC4 V3D driver
-dtoverlay=vc4-kms-v3d
-# max_framebuffers=2
-
+dtoverlay=vc4-kms-v3d-pi5
+max_framebuffers=2
 disable_fw_kms_setup=1
 disable_overscan=1
 arm_boost=1
@@ -32,3 +26,5 @@ pciex4_reset=0
 os_check=0
 # dtparam=i2c_arm=on
 # later add quiet vt.global_cursor_default=0 loglevel=0 systemd.getty_auto=no logo.nologo fsck.mode=skip loglevel=4
+dtparam=pciex1_gen=3
+# usb_max_current_enable=1

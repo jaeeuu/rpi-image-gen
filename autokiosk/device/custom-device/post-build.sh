@@ -29,32 +29,27 @@ for unit in "$1"/etc/systemd/system/getty@*.service; do
   ln -sf /dev/null "$unit"
 done
 
-sed -i -e 's/^WantedBy=multi-user\.target$/WantedBy=sysinit.target/' "$1/lib/systemd/system/seatd.service"
+sed -i -e 's/^WantedBy=multi-user\.target$/WantedBy=local-fs-pre.target/' "$1/lib/systemd/system/seatd.service"
 
 # ln -sf /dev/null $1/lib/systemd/system/plymouth-quit.service 2>/dev/null || true
 
-ln -sf /dev/null $1/etc/systemd/system/systemd-logind.service 2>/dev/null || true
+# ln -sf /dev/null $1/etc/systemd/system/systemd-logind.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/getty-static.service 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/getty@.service 2>/dev/null || true
+# ln -sf /dev/null $1/etc/systemd/system/serial-getty@ttyAMA10.service 2>/dev/null || true
 # ln -sf /dev/null $1/etc/systemd/system/getty.target 2>/dev/null || true
 
 # vconsole-setup, console-setup.service, keyboard-setup.service, serial-getty@ttyAMA0.service, serial-getty@ttyS0.service
 
-# if [ -f "$1/etc/systemd/logind.conf" ]; then
-#   sed -i \
-#     -e 's/^[[:space:]]*#\?[[:space:]]*NAutoVTs=.*/NAutoVTs=1/' \
-#     -e 's/^[[:space:]]*#\?[[:space:]]*ReserveVT=.*/ReserveVT=1/' \
-#     "$1/etc/systemd/logind.conf"
-# fi
-
-# FSTAB="$1/etc/fstab"
-
-# sed -Ei '
-#   /^\s*#/b
-#   /^\s*$/b
-#   /(^|,|\s)fastboot(,|\s|$)/b
-#   s/^(\S+[[:space:]]+\S+[[:space:]]+\S+[[:space:]]+)(\S+)/\1\2,fastboot/
-# ' "$FSTAB"
+ln -sf /dev/null $1/etc/systemd/system/systemd-logind.service 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/systemd-tpm2-setup-early.service 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/systemd-pcrmachine.service 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/systemd-hibernate-clear.service 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/sys-kernel-tracing.mount 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/sys-kernel-debug.mount 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/dev-hugepages.mount 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/systemd-pcrlock.socket 2>/dev/null || true
+ln -sf /dev/null $1/etc/systemd/system/systemd-pcrextend.socket 2>/dev/null || true
 
 chmod -R 755 "$1/opt/app"
 chmod +x "$1/opt/eeprom-tool.sh"
@@ -67,10 +62,9 @@ chmod +x "$1/opt/eeprom-tool.sh"
 rm -rf "$1/usr/share/doc"/* "$1/usr/share/man"/* "$1/usr/share/locale/"/* "$1/usr/share/info/"/* "$1/usr/share/lintian/"/* \
         "$1/usr/share/linda/"/* "$1/usr/share/debhelper/"/* "$1/usr/share/pixmaps/"/* "$1/usr/share/applications/"/* \
         "$1/usr/share/help/"/* "$1/usr/share/gtk-doc"/* "$1/usr/share/icons"/* "$1/usr/share/themes"/* \
-        "$1/usr/share/sounds"/* "$1/usr/share/backgrounds"/*
+        "$1/usr/share/sounds"/* "$1/usr/share/backgrounds"/* "$1/usr/share/pkgconfig"/*
 
-rm -rf "$1/usr/bin/dpkg" "$1/usr/include"/* "$1/usr/share/pkgconfig"/* "$1/usr/share/aclocal"/*
-rm -rf "$1/etc/apt" "$1/etc/dpkg" 
+rm -rf "$1/etc/apt"/* "$1/etc/dpkg"/* "$1/usr/bin/dpkg"/*
 rm -rf "$1/var/cache/*" "$1/var/lib/apt/lists/" "$1/var/tmp"/*
 rm -rf "$1/tmp"/*
 

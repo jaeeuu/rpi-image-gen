@@ -5,7 +5,7 @@ SPIDEV="/dev/spidev10.0"
 freq="16000"
 
 #flashrom -p linux_spi:dev=/dev/spidev10.0,spispeed=16000 -w /boot/firmware/pieeprom.upd
-flashrom -p linux_spi:dev=${SPIDEV},spispeed=${freq} -w ${BOOTFS}/pieeprom.upd
+# flashrom -p linux_spi:dev=${SPIDEV},spispeed=${freq} -w ${BOOTFS}/pieeprom.upd
 # if ! flashrom -p "linux_spi:dev=${SPIDEV},spispeed=16000" -w "${BOOTFS}/pieeprom.upd"; then
 #     flashrom -p "linux_spi:dev=${SPIDEV},spispeed=8000" -w "${BOOTFS}/pieeprom.upd"
 # fi
