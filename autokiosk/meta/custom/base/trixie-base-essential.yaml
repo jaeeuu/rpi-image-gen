@@ -17,7 +17,6 @@ mmdebstrap:
     - mount
     - adduser
     - libbpf1
-    - linux-sysctl-defaults
     - udev
   essential-hooks:
     - echo tzdata tzdata/Areas select "$IGconf_device_timezone_area"

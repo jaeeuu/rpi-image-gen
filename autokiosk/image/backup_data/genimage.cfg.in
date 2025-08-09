@@ -1,0 +1,58 @@
+image <IMAGE_NAME>.<IMAGE_SUFFIX> {
+   hdimage {
+      align = 8M
+      partition-table-type = "mbr"
+      disk-signature = 0xa1b2c3d4
+   }
+
+   partition boot {
+      in-partition-table = true
+      partition-type = 0xC
+      image = boot.vfat
+      bootable = true
+   }
+
+   partition root {
+      in-partition-table = true
+      partition-type = 0x83
+      image = root.ext4
+   }
+
+   partition data {
+      in-partition-table = true
+      partition-type = 0x83
+      image = data.ext4
+   }
+   
+}
+
+image boot.vfat {
+   vfat {
+      label = "BOOT"
+   }
+   size = <FW_SIZE>
+   mountpoint = "/boot/firmware"
+   exec-pre = "<SETUP> BOOT"
+}
+
+image root.ext4 {
+   ext4 {
+      label = "ROOT"
+      use-mke2fs = true
+      mke2fs-conf = <MKE2FSCONF_ROOT>
+   }
+   size = <ROOT_SIZE>
+   mountpoint = "/"
+   exec-pre = "<SETUP> ROOT"
+}
+
+image data.ext4 {
+   ext4 {
+      label = "DATA"
+      use-mke2fs = true
+      mke2fs-conf = <MKE2FSCONF_DATA>
+   }
+   size = <DATA_SIZE>
+   mountpoint = "/data"
+   exec-pre = "<SETUP> DATA"
+}

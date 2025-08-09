@@ -7,4 +7,4 @@ custom/rpi/boot-firmware
 custom/base/linux-kernel-custom
 custom/rpi/user-credentials
 custom/rpi/misc-skel
-custom/base/systemd-net-min
+custom/base/set-systemd

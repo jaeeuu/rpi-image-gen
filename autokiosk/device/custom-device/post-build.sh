@@ -53,6 +53,7 @@ ln -sf /dev/null $1/etc/systemd/system/systemd-pcrextend.socket 2>/dev/null || t
 
 chmod -R 755 "$1/opt/app"
 chmod +x "$1/opt/eeprom-tool.sh"
+chmod +x "$1/opt/usb_auto_mount.sh"
 
 # rm -rf "$1/usr/share/plymouth/themes/bgrt" "$1/usr/share/plymouth/themes/fade-in" \
 #        "$1/usr/share/plymouth/themes/glow" "$1/usr/share/plymouth/themes/script" \

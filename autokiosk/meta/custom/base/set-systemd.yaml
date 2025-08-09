@@ -1,0 +1,27 @@
+---
+name: set-systemd
+mmdebstrap:
+  packages:
+    - systemd
+    - systemd-sysv
+    - systemd-timesyncd
+  customize-hooks:
+    - $BDEBSTRAP_HOOKS/enable-units "$1" systemd-networkd
+    - $BDEBSTRAP_HOOKS/enable-units "$1" systemd-timesyncd
+    - $BDEBSTRAP_HOOKS/enable-units "$1" systemd-sysctl
+    - mkdir -p $1/etc/systemd/network
+    - ln -sf /dev/null $1/etc/systemd/network/99-default.link
+    - ln -sf /dev/null $1/etc/systemd/network/73-usb-net-by-mac.link
+    - |-
+      cat <<- EOF > $1/etc/systemd/network/50-end0.network
+      [Match]
+      Name=end0
+
+      [Network]
+      DHCP=no
+      LinkLocalAddressing=no
+      Address=192.168.1.101/24
+      EOF
+    # - $META_HOOKS/systemd/netgen eth0 > $1/etc/systemd/network/01-eth0.network
+    # - mkdir -p $1/var/lib/systemd/network
+    # - install -d -m 755 $1/var/lib/systemd/network

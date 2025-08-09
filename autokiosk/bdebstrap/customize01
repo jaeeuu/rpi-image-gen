@@ -29,6 +29,8 @@ $BDEBSTRAP_HOOKS/enable-units "$1" ballot-back
 mkdir -p "$1/etc/xdg/cog"
 cat ../services/cog.ini.tpl > "$1/etc/xdg/cog/cog.ini"
 
+mkdir -p "$1/data/app"
+
 # mkdir -p "$1/etc/udev/rules.d"
 # cat ../services/72-seat.rules.tpl > "$1/etc/udev/rules.d/72-rp1_drm-seat.rules"
 

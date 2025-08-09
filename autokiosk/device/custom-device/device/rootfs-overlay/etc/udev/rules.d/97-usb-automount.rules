@@ -1,0 +1,1 @@
+ACTION=="add|remove", SUBSYSTEM=="block", DEVTYPE=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_TYPE}!="", RUN+="/opt/usb_auto_mount.sh %E{ACTION} %E{DEVNAME}"

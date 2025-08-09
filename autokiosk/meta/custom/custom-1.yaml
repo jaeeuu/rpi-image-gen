@@ -8,7 +8,9 @@ mmdebstrap:
     - ncurses-term
     - seatd
     - libseat1
-    # - zstd
+    - zstd
+    # - udisks2
+    # - polkitd
     # - initramfs-tools
     # - plymouth
     # - plymouth-themes

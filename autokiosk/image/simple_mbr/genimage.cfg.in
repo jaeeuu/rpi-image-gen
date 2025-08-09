@@ -17,13 +17,6 @@ image <IMAGE_NAME>.<IMAGE_SUFFIX> {
       partition-type = 0x83
       image = root.ext4
    }
-
-   partition data {
-      in-partition-table = true
-      partition-type = 0x83
-      image = data.ext4
-   }
-   
 }
 
 image boot.vfat {
@@ -39,20 +32,9 @@ image root.ext4 {
    ext4 {
       label = "ROOT"
       use-mke2fs = true
-      mke2fs-conf = <MKE2FSCONF_ROOT>
+      mke2fs-conf = <MKE2FSCONF>
    }
    size = <ROOT_SIZE>
    mountpoint = "/"
    exec-pre = "<SETUP> ROOT"
-}
-
-image data.ext4 {
-   ext4 {
-      label = "DATA"
-      use-mke2fs = true
-      mke2fs-conf = <MKE2FSCONF_DATA>
-   }
-   size = <DATA_SIZE>
-   mountpoint = "/data"
-   exec-pre = "<SETUP> DATA"
 }
