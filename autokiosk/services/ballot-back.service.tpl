@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Restart=always
-WorkingDirectory=/opt/app
-ExecStart=/opt/app/ballot-back
+WorkingDirectory=/data/app
+ExecStart=/data/app/ballot-back
 StandardError=journal
 LimitNOFILE=65535
 MemoryMax=unlimited

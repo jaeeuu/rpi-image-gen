@@ -18,7 +18,9 @@ mmdebstrap:
     - libasound2-data
     - alsa-ucm-conf
     - alsa-topology-conf
-    # - alsa-utils
+    - alsa-utils
+    - libinput10
+    - iproute2
   aptopts:
     - APT::Install-Suggests "false"
     - APT::Install-Recommends "false"

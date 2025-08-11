@@ -13,9 +13,9 @@ mmdebstrap:
     - ln -sf /dev/null $1/etc/systemd/network/99-default.link
     - ln -sf /dev/null $1/etc/systemd/network/73-usb-net-by-mac.link
     - |-
-      cat <<- EOF > $1/etc/systemd/network/50-end0.network
+      cat <<- EOF > $1/etc/systemd/network/50-eth0.network
       [Match]
-      Name=end0
+      Name=eth0
 
       [Network]
       DHCP=no

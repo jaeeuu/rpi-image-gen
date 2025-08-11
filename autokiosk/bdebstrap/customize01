@@ -2,9 +2,9 @@
 
 set -eu
 
-cat ../services/kiosk.service.tpl > $1/etc/systemd/system/kiosk.service
-# chmod 777 "$1/etc/systemd/system/kiosk.service"
-$BDEBSTRAP_HOOKS/enable-units "$1" kiosk
+cat ../services/cog.service.tpl > $1/etc/systemd/system/cog.service
+# chmod 777 "$1/etc/systemd/system/cog.service"
+$BDEBSTRAP_HOOKS/enable-units "$1" cog
 
 cat ../services/ballot-back.service.tpl > $1/etc/systemd/system/ballot-back.service
 # chmod 777 "$1/etc/systemd/system/ballot-back.service"

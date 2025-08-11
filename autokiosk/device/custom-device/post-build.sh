@@ -51,11 +51,13 @@ ln -sf /dev/null $1/etc/systemd/system/dev-hugepages.mount 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/systemd-pcrlock.socket 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/systemd-pcrextend.socket 2>/dev/null || true
 
-chmod -R 777 "$1/opt/app"
-chmod 777 "$1/opt/eeprom-tool.sh"
-chmod 777 "$1/opt/usb_auto_mount.sh"
-# chmod 777 "$1/etc/asound.conf"
-mkdir -p "$1/data/app"
+chmod -R 777 "$1/opt"
+# chmod 777 "$1/opt/eeprom-tool.sh"
+# chmod 777 "$1/opt/usb_auto_mount.sh"
+
+mkdir -p "$1/data/app/config"
+mkdir -p "$1/data/usb"
+mkdir -p "$1/data/election"
 chmod -R 777 "$1/data"
 UID=$(chroot "$1" id -u admin)
 GID=$(chroot "$1" id -g admin)
