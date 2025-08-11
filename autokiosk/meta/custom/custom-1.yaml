@@ -4,17 +4,11 @@ mmdebstrap:
   packages:
     - ca-certificates
     - wget
-    - nano
-    - ncurses-term
     - seatd
     - libseat1
     - zstd
-    # - udisks2
-    # - polkitd
-    # - initramfs-tools
-    # - plymouth
-    # - plymouth-themes
-    # - flashrom
+    - nano
+    - ncurses-term
     # - procps
     # - lz4
   aptopts:
@@ -23,6 +17,7 @@ mmdebstrap:
   dpkgopts:
     - path-exclude=/usr/share/man/*
     - path-exclude=/usr/share/locale/*
+    - path-include=/usr/share/locale/locale.alias
     - path-exclude=/usr/share/doc/*
     - path-exclude=/usr/share/{doc,info,man,omf,help,gnome/help}/*
     - path-exclude=/usr/share/lintian/*

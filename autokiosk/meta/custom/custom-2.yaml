@@ -14,12 +14,18 @@ mmdebstrap:
     - libgles2
     - libxkbcommon0
     - libwayland-egl1
+    - libasound2t64
+    - libasound2-data
+    - alsa-ucm-conf
+    - alsa-topology-conf
+    # - alsa-utils
   aptopts:
     - APT::Install-Suggests "false"
     - APT::Install-Recommends "false"
   dpkgopts:
     - path-exclude=/usr/share/man/*
     - path-exclude=/usr/share/locale/*
+    - path-include=/usr/share/locale/locale.alias
     - path-exclude=/usr/share/doc/*
     - path-exclude=/usr/share/{doc,info,man,omf,help,gnome/help}/*
     - path-exclude=/usr/share/lintian/*

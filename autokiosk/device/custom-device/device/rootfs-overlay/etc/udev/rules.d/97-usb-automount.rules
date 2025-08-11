@@ -1,1 +1,1 @@
-ACTION=="add|remove", SUBSYSTEM=="block", DEVTYPE=="partition", ENV{ID_BUS}=="usb", ENV{ID_FS_TYPE}!="", RUN+="/opt/usb_auto_mount.sh %E{ACTION} %E{DEVNAME}"
+ACTION=="add", SUBSYSTEM=="block", ENV{DEVTYPE}=="partition", ENV{ID_BUS}=="usb", IMPORT{builtin}="blkid", ENV{ID_FS_TYPE}=="?*", ENV{SYSTEMD_WANTS}+="usb-auto-mount@%k.service"

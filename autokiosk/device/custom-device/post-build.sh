@@ -51,14 +51,15 @@ ln -sf /dev/null $1/etc/systemd/system/dev-hugepages.mount 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/systemd-pcrlock.socket 2>/dev/null || true
 ln -sf /dev/null $1/etc/systemd/system/systemd-pcrextend.socket 2>/dev/null || true
 
-chmod -R 755 "$1/opt/app"
-chmod +x "$1/opt/eeprom-tool.sh"
-chmod +x "$1/opt/usb_auto_mount.sh"
-
-# rm -rf "$1/usr/share/plymouth/themes/bgrt" "$1/usr/share/plymouth/themes/fade-in" \
-#        "$1/usr/share/plymouth/themes/glow" "$1/usr/share/plymouth/themes/script" \
-#        "$1/usr/share/plymouth/themes/solar" "$1/usr/share/plymouth/themes/spinfinity" \
-#        "$1/usr/share/plymouth/themes/details"
+chmod -R 777 "$1/opt/app"
+chmod 777 "$1/opt/eeprom-tool.sh"
+chmod 777 "$1/opt/usb_auto_mount.sh"
+# chmod 777 "$1/etc/asound.conf"
+mkdir -p "$1/data/app"
+chmod -R 777 "$1/data"
+UID=$(chroot "$1" id -u admin)
+GID=$(chroot "$1" id -g admin)
+chown -R --no-dereference "$UID:$GID" "$1/data"
 
 rm -rf "$1/usr/share/doc"/* "$1/usr/share/man"/* "$1/usr/share/locale/"/* "$1/usr/share/info/"/* "$1/usr/share/lintian/"/* \
         "$1/usr/share/linda/"/* "$1/usr/share/debhelper/"/* "$1/usr/share/pixmaps/"/* "$1/usr/share/applications/"/* \

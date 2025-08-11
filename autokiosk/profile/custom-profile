@@ -1,6 +1,6 @@
 
 custom/base/trixie-base-essential
-rpi/debian/trixie/apt
+custom/rpi/debian/trixie/apt
 custom/custom-1
 custom/custom-2
 custom/rpi/boot-firmware

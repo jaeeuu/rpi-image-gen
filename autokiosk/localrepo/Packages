@@ -22,16 +22,16 @@ Source: linux
 Version: 1:6.12.34-1+rpt1~trixie
 Architecture: arm64
 Maintainer: Serge Schneider <serge@raspberrypi.com>
-Installed-Size: 23301
+Installed-Size: 23181
 Depends: kmod, linux-base (>= 4.3~)
 Recommends: apparmor
 Suggests: firmware-linux-free, linux-doc-6.12, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7), wireless-regdb (<< 2019.06.03-1~)
 Filename: pool/linux-kernel.deb
-Size: 20412616
-MD5sum: c3a7ea43124ca2260977486916ddde94
-SHA1: 907ca4d7f35e9322f49f86d9cf7e78b70ff9a7b1
-SHA256: efb5530ebe9cfae9fb11be560bfc1c1faa5ba5c4f4f735a4ed4f8476af19d304
+Size: 20277886
+MD5sum: 9782fd6eb05d411f06f9d676f5b80144
+SHA1: 56fff97b6463a77d2e921220cbcf3105e48a524c
+SHA256: 0a0a97c6888afd7e351f57e32437ff9ffbc0cb704019bf4335c5c5adaf47a939
 Section: kernel
 Priority: optional
 Homepage: https://github.com/raspberrypi/linux/

@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-mount USB device %I
+BindsTo=dev-%i.device
+After=dev-%i.device
+Requires=dev-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=PATH=/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/opt/usb_auto_mount.sh add /dev/%I
+ExecStop=/opt/usb_auto_mount.sh remove /dev/%I

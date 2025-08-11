@@ -18,25 +18,30 @@ mmdebstrap:
     - adduser
     - libbpf1
     - udev
+    - locales
+    - tzdata
+  setup-hooks:
+    - export LANG=C.UTF-8 LC_ALL=C.UTF-8
   essential-hooks:
-    - echo tzdata tzdata/Areas select "$IGconf_device_timezone_area"
+    - echo tzdata tzdata/Areas select Asia
         | chroot $1 debconf-set-selections
-    - echo tzdata tzdata/Zones/$IGconf_device_timezone_area select "$IGconf_device_timezone_city"
+    - echo tzdata tzdata/Zones/Asia select Seoul
         | chroot $1 debconf-set-selections
-    - echo locales locales/locales_to_be_generated multiselect "$IGconf_device_locale1"
+    - echo locales locales/locales_to_be_generated multiselect ko_KR.UTF-8 UTF-8
         | chroot $1 debconf-set-selections
-    - echo locales locales/default_environment_locale select "$IGconf_device_locale1"
+    - echo locales locales/default_environment_locale select ko_KR.UTF-8
         | chroot $1 debconf-set-selections
-    - echo keyboard-configuration keyboard-configuration/variant select "$IGconf_device_keyboard_layout"
+    - echo "keyboard-configuration keyboard-configuration/variant select English (US)"
         | chroot $1 debconf-set-selections
-    - echo keyboard-configuration keyboard-configuration/xkb-keymap select "$IGconf_device_keyboard_keymap"
+    - echo keyboard-configuration keyboard-configuration/xkb-keymap select us
         | chroot $1 debconf-set-selections
   aptopts:
     - APT::Install-Suggests "false"
     - APT::Install-Recommends "false"
   dpkgopts:
     - path-exclude=/usr/share/man/*
-    - path-exclude=/usr/share/locale/*
+    # - path-exclude=/usr/share/locale/*
+    # - path-include=/usr/share/locale/locale.alias
     - path-exclude=/usr/share/doc/*
     - path-exclude=/usr/share/{doc,info,man,omf,help,gnome/help}/*
     - path-exclude=/usr/share/lintian/*

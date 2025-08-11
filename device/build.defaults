@@ -16,14 +16,14 @@ user1=pi
 user1pass=
 
 # Default locale
-locale1="en_GB.UTF-8"
+locale1="ko_KR.UTF-8"
 
 # Default keymap
-keyboard_keymap=gb
+keyboard_keymap=us
 
 # Default keyboard layout
 # debconf-show keyboard-configuration keyboard-configuration/xkb-keymap
-keyboard_layout="English (UK)"
+keyboard_layout="English (US)"
 
 # Default timezone
 # /etc/timezone
